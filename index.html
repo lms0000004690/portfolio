@@ -96,6 +96,7 @@
 
   /* 프로젝트 타일 */
   .tiles { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+  #panel { grid-column: 1 / -1; margin-top: 6px; background: color-mix(in srgb, var(--color-accent) 7%, transparent); border-color: var(--color-accent); }
   .tile { cursor: pointer; padding: 14px 15px 13px; background: transparent; transition: transform 240ms cubic-bezier(.2,.7,.2,1), background 240ms ease, border-color 240ms ease; }
   .tile:hover { transform: translateY(-4px); border-color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 6%, transparent); }
   .tile:hover > .corner, .tile:hover .plus { color: var(--color-accent); }
@@ -108,7 +109,7 @@
   .tile .foot { margin-top: 12px; }
   .tile .status { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-neutral-600); transition: color 200ms ease; }
   .tile .plus { font-family: var(--font-heading); font-size: 16px; line-height: 1; color: var(--color-neutral-500); transition: transform 260ms cubic-bezier(.2,.7,.2,1), color 200ms ease; }
-  .tile[aria-pressed="true"] { background: color-mix(in srgb, var(--color-accent) 12%, transparent); border-color: var(--color-accent); transform: translateY(-4px); }
+  .tile[aria-pressed="true"] { background: color-mix(in srgb, var(--color-accent) 20%, transparent); border-color: var(--color-accent); transform: translateY(-4px); }
   .tile[aria-pressed="true"] .desig { color: var(--color-accent-800); }
   .tile[aria-pressed="true"] .key { color: var(--color-accent-800); }
   .tile[aria-pressed="true"] .keylabel, .tile[aria-pressed="true"] .status { color: var(--color-accent-700); }
@@ -226,18 +227,16 @@
   </div>
 </section>
 
-<section id="index" class="wrap" style="padding-top:34px;padding-bottom:22px">
+<section id="index" class="wrap" style="padding-top:34px;padding-bottom:56px">
   <div class="sechead">
     <h2>Index</h2>
     <span>눌러서 열어보세요 · ← → 키로도 이동</span>
   </div>
-  <div class="tiles" id="tiles"></div>
-</section>
-
-<section class="wrap" style="padding-bottom:56px">
-  <div class="blueprint panel a" id="panel">
-    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-    <div class="grid" id="panelBody"></div>
+  <div class="tiles" id="tiles">
+    <div class="blueprint panel a" id="panel">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="grid" id="panelBody"></div>
+    </div>
   </div>
 </section>
 
@@ -380,7 +379,7 @@ const panelEl = document.getElementById("panel");
 const bodyEl = document.getElementById("panelBody");
 let current = 0;
 
-tilesEl.innerHTML = PROJECTS.map((p, i) => `
+tilesEl.insertAdjacentHTML("afterbegin", PROJECTS.map((p, i) => `
   <div class="tile blueprint${p.done ? " done" : ""}" role="button" tabindex="0" aria-pressed="${i === 0}" data-i="${i}">
     <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
     <div class="row"><span class="desig">E${esc(p.num)}</span><span class="dot"></span></div>
@@ -388,7 +387,18 @@ tilesEl.innerHTML = PROJECTS.map((p, i) => `
     <span class="keylabel">${esc(p.keyLabel)}</span>
     <span class="tiletitle">${esc(p.title)}</span>
     <div class="row foot"><span class="status">${esc(p.status)}</span><span class="plus">+</span></div>
-  </div>`).join("");
+  </div>`).join(""));
+
+// 선택한 타일이 속한 줄 바로 아래로 상세 판을 옮긴다
+function placePanel() {
+  const tiles = [...tilesEl.querySelectorAll(".tile")];
+  const act = tiles[current];
+  if (!act) return;
+  const top = act.offsetTop;
+  let last = act;
+  tiles.forEach(t => { if (Math.abs(t.offsetTop - top) < 2) last = t; });
+  if (last.nextElementSibling !== panelEl) last.after(panelEl);
+}
 
 function renderPanel(i) {
   const p = PROJECTS[i];
@@ -413,6 +423,7 @@ function select(i) {
   if (i === current || i < 0 || i >= PROJECTS.length) return;
   current = i;
   tilesEl.querySelectorAll(".tile").forEach((el, k) => el.setAttribute("aria-pressed", String(k === i)));
+  placePanel();
   renderPanel(i);
 }
 
@@ -440,6 +451,9 @@ addEventListener("scroll", () => {
 const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) en.target.classList.add("in"); }), { threshold: 0.15 });
 document.querySelectorAll("[data-reveal]").forEach(el => io.observe(el));
 
+addEventListener("resize", placePanel);
+
+placePanel();
 renderPanel(0);
 </script>
 
