@@ -15,32 +15,31 @@
   }
 
   :root {
-    --bg: #FAFBFC;
-    --surface: #FFFFFF;
-    --text: #1A1A1A;
-    --text-light: #6B7280;
-    --border: #E5E7EB;
-    --accent: #2563EB;
-    --accent-light: #DBEAFE;
-    --orange: #F59E0B;
-    --orange-light: #FEF3C7;
-    --success: #10B981;
-    --success-light: #D1FAE5;
+    --black: #000000;
+    --gray-900: #111111;
+    --gray-800: #1A1A1A;
+    --gray-700: #2A2A2A;
+    --gray-600: #3A3A3A;
+    --gray-500: #666666;
+    --gray-400: #999999;
+    --gray-300: #CCCCCC;
+    --gray-200: #E5E5E5;
+    --gray-100: #F5F5F5;
+    --white: #FFFFFF;
   }
 
   body {
     font-family: 'Inter', -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    background: var(--white);
+    color: var(--black);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
   /* 네비게이션 */
   nav {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
+    background: var(--black);
+    border-bottom: 1px solid var(--gray-800);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -59,34 +58,37 @@
   .logo {
     font-weight: 700;
     font-size: 18px;
+    color: var(--white);
+    letter-spacing: -0.01em;
   }
 
   .nav-links {
     display: flex;
-    gap: 8px;
+    gap: 4px;
     list-style: none;
   }
 
   .nav-links a {
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 6px;
     text-decoration: none;
-    color: var(--text-light);
+    color: var(--gray-400);
     font-size: 14px;
     font-weight: 500;
     transition: all 0.2s;
   }
 
   .nav-links a:hover {
-    background: var(--accent-light);
-    color: var(--accent);
+    background: var(--gray-900);
+    color: var(--white);
   }
 
   /* 히어로 */
   .hero {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 80px 24px 60px;
+    padding: 100px 24px 80px;
+    border-bottom: 1px solid var(--gray-200);
   }
 
   .hero-content {
@@ -96,48 +98,57 @@
   .badge {
     display: inline-block;
     padding: 6px 14px;
-    background: var(--orange-light);
-    color: var(--orange);
-    border-radius: 20px;
-    font-size: 13px;
+    background: var(--black);
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 12px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
   h1 {
-    font-size: 48px;
+    font-size: 56px;
     font-weight: 800;
     line-height: 1.1;
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+    color: var(--black);
   }
 
   .subtitle {
     font-size: 20px;
-    color: var(--text-light);
-    margin-bottom: 20px;
+    color: var(--gray-600);
+    margin-bottom: 24px;
+    font-weight: 500;
   }
 
   .description {
     font-size: 16px;
-    color: var(--text-light);
-    line-height: 1.7;
-    margin-bottom: 28px;
+    color: var(--gray-700);
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  .description strong {
+    color: var(--black);
+    font-weight: 600;
   }
 
   .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
   }
 
   .tag {
     padding: 8px 16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: 4px;
     font-size: 13px;
-    color: var(--text-light);
+    color: var(--gray-700);
     font-weight: 500;
   }
 
@@ -145,114 +156,116 @@
   .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 24px 80px;
+    padding: 60px 24px 100px;
   }
 
   .section-title {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
-    color: var(--text-light);
+    color: var(--gray-500);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 24px;
+    letter-spacing: 0.1em;
+    margin-bottom: 32px;
   }
 
   .projects {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
   }
 
   .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: 8px;
+    padding: 28px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
   }
 
   .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-color: var(--black);
   }
 
   .card-icon {
-    width: 48px;
-    height: 48px;
-    background: var(--accent-light);
-    color: var(--accent);
-    border-radius: 10px;
+    width: 52px;
+    height: 52px;
+    background: var(--black);
+    color: var(--white);
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 16px;
-    margin-bottom: 16px;
+    font-size: 18px;
+    margin-bottom: 20px;
     transition: all 0.3s;
   }
 
   .card:hover .card-icon {
-    background: var(--accent);
-    color: white;
+    background: var(--gray-900);
     transform: scale(1.05);
   }
 
   .card-status {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 4px 10px;
-    border-radius: 12px;
+    top: 24px;
+    right: 24px;
+    padding: 5px 12px;
+    border-radius: 4px;
     font-size: 11px;
     font-weight: 600;
+    letter-spacing: 0.03em;
   }
 
   .status-done {
-    background: var(--success-light);
-    color: var(--success);
+    background: var(--black);
+    color: var(--white);
   }
 
   .status-draft {
-    background: var(--orange-light);
-    color: var(--orange);
+    background: var(--gray-200);
+    color: var(--gray-700);
   }
 
   .card-title {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     line-height: 1.3;
+    color: var(--black);
   }
 
   .card-subtitle {
     font-size: 14px;
-    color: var(--text-light);
-    margin-bottom: 16px;
+    color: var(--gray-600);
+    margin-bottom: 18px;
+    line-height: 1.5;
   }
 
   .card-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
   }
 
   .card-tag {
-    padding: 4px 10px;
-    background: var(--bg);
-    border-radius: 6px;
+    padding: 5px 12px;
+    background: var(--gray-100);
+    border-radius: 4px;
     font-size: 12px;
-    color: var(--text-light);
+    color: var(--gray-700);
+    font-weight: 500;
   }
 
   /* 모달 */
   .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.75);
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -269,15 +282,16 @@
   }
 
   .modal {
-    background: var(--surface);
-    border-radius: 16px;
-    max-width: 700px;
+    background: var(--white);
+    border-radius: 8px;
+    max-width: 720px;
     width: 100%;
     max-height: 85vh;
     overflow-y: auto;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     transform: scale(0.95) translateY(20px);
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid var(--gray-300);
   }
 
   .modal-overlay.show .modal {
@@ -285,21 +299,22 @@
   }
 
   .modal-header {
-    padding: 32px 32px 24px;
-    border-bottom: 1px solid var(--border);
+    padding: 36px 36px 28px;
+    border-bottom: 1px solid var(--gray-200);
     position: relative;
+    background: var(--gray-100);
   }
 
   .modal-close {
     position: absolute;
-    top: 24px;
-    right: 24px;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: transparent;
-    border: none;
-    color: var(--text-light);
+    top: 28px;
+    right: 28px;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    color: var(--gray-700);
     font-size: 24px;
     cursor: pointer;
     display: flex;
@@ -310,55 +325,56 @@
   }
 
   .modal-close:hover {
-    background: var(--bg);
-    color: var(--text);
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
   }
 
   .modal-title {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
-    margin-bottom: 8px;
-    padding-right: 40px;
+    margin-bottom: 10px;
+    padding-right: 50px;
     line-height: 1.3;
+    color: var(--black);
   }
 
   .modal-subtitle {
     font-size: 14px;
-    color: var(--text-light);
+    color: var(--gray-600);
   }
 
   .modal-body {
-    padding: 32px;
+    padding: 36px;
   }
 
   .metrics {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    margin-bottom: 32px;
+    margin-bottom: 36px;
   }
 
   .metric {
-    padding: 20px;
-    background: var(--bg);
-    border-radius: 10px;
+    padding: 24px;
+    background: var(--gray-100);
+    border-radius: 6px;
     text-align: center;
+    border: 1px solid var(--gray-200);
   }
 
   .metric-value {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 700;
-    color: var(--text);
-    margin-bottom: 6px;
+    color: var(--black);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
   }
-
-  .metric-value.accent { color: var(--accent); }
-  .metric-value.orange { color: var(--orange); }
-  .metric-value.success { color: var(--success); }
 
   .metric-label {
     font-size: 13px;
-    color: var(--text-light);
+    color: var(--gray-600);
+    font-weight: 500;
   }
 
   .star-section {
@@ -368,46 +384,75 @@
   }
 
   .star-item {
-    padding: 20px;
-    background: var(--bg);
-    border-radius: 10px;
-    border-left: 3px solid var(--accent);
+    padding: 24px;
+    background: var(--white);
+    border-radius: 6px;
+    border: 1px solid var(--gray-200);
+    border-left: 3px solid var(--black);
   }
 
   .star-label {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 8px;
+    color: var(--black);
+    margin-bottom: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
   }
 
   .star-content {
     font-size: 14px;
-    color: var(--text);
-    line-height: 1.6;
+    color: var(--gray-800);
+    line-height: 1.7;
   }
 
   .modal::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
   }
 
   .modal::-webkit-scrollbar-track {
-    background: transparent;
+    background: var(--gray-100);
   }
 
   .modal::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 3px;
+    background: var(--gray-400);
+    border-radius: 4px;
+  }
+
+  .modal::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-600);
+  }
+
+  /* Footer */
+  footer {
+    background: var(--black);
+    color: var(--gray-400);
+    padding: 60px 24px;
+    border-top: 1px solid var(--gray-900);
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .footer-content p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .footer-content strong {
+    color: var(--white);
   }
 
   @media (max-width: 768px) {
-    h1 { font-size: 36px; }
+    h1 { font-size: 40px; }
     .projects { grid-template-columns: 1fr; }
     .metrics { grid-template-columns: 1fr; }
-    .modal-body { padding: 24px; }
+    .modal-body { padding: 28px; }
     .nav-links { display: none; }
+    .hero { padding: 60px 24px 50px; }
   }
 </style>
 </head>
@@ -415,17 +460,18 @@
 
 <nav>
   <div class="nav-container">
-    <div class="logo">전력변환 포트폴리오</div>
+    <div class="logo">PORTFOLIO</div>
     <ul class="nav-links">
-      <li><a href="#projects">프로젝트</a></li>
-      <li><a href="#about">소개</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </nav>
 
 <section class="hero">
   <div class="hero-content">
-    <span class="badge">Power Electronics Engineer</span>
+    <span class="badge">Power Electronics</span>
     <h1>전력변환 회로 설계</h1>
     <p class="subtitle">전동화 전력변환 H/W · 제어기 회로 설계</p>
     <p class="description">
@@ -441,18 +487,18 @@
 </section>
 
 <div class="container" id="projects">
-  <h2 class="section-title">주요 프로젝트</h2>
+  <h2 class="section-title">Projects</h2>
   <div class="projects">
     
     <div class="card" data-project="e01">
       <div class="card-icon">01</div>
       <span class="card-status status-done">완성</span>
       <h3 class="card-title">RC카 셧다운 원인 규명</h3>
-      <p class="card-subtitle">전력전자학회 IE 경진대회</p>
+      <p class="card-subtitle">전력전자학회 IE 경진대회 · 하드웨어 담당</p>
       <div class="card-tags">
         <span class="card-tag">트러블슈팅</span>
         <span class="card-tag">전원 설계</span>
-        <span class="card-tag">PCB</span>
+        <span class="card-tag">PCB 재설계</span>
       </div>
     </div>
 
@@ -460,11 +506,11 @@
       <div class="card-icon">02</div>
       <span class="card-status status-done">완성</span>
       <h3 class="card-title">GaN 인버터 열 마진 설계</h3>
-      <p class="card-subtitle">IE 경진대회 3위 수상</p>
+      <p class="card-subtitle">IE 경진대회 3위 수상 · Infineon CoolGaN</p>
       <div class="card-tags">
         <span class="card-tag">전력전자</span>
-        <span class="card-tag">GaN</span>
-        <span class="card-tag">열설계</span>
+        <span class="card-tag">GaN 소자</span>
+        <span class="card-tag">열 설계</span>
       </div>
     </div>
 
@@ -472,11 +518,11 @@
       <div class="card-icon">03</div>
       <span class="card-status status-draft">작성중</span>
       <h3 class="card-title">e-포뮬러 전기회로팀</h3>
-      <p class="card-subtitle">3년 활동 · 은상·동상</p>
+      <p class="card-subtitle">자작자동차 동아리 · 3년 활동</p>
       <div class="card-tags">
         <span class="card-tag">팀워크</span>
-        <span class="card-tag">EV</span>
-        <span class="card-tag">협업</span>
+        <span class="card-tag">EV 전장</span>
+        <span class="card-tag">장기 프로젝트</span>
       </div>
     </div>
 
@@ -484,11 +530,11 @@
       <div class="card-icon">04</div>
       <span class="card-status status-draft">작성중</span>
       <h3 class="card-title">플라이백 컨버터</h3>
-      <p class="card-subtitle">도전학기제 프로젝트</p>
+      <p class="card-subtitle">도전학기제 · 절연형 DC-DC 컨버터</p>
       <div class="card-tags">
         <span class="card-tag">SMPS</span>
         <span class="card-tag">DC-DC</span>
-        <span class="card-tag">절연형</span>
+        <span class="card-tag">자기소자</span>
       </div>
     </div>
 
@@ -496,15 +542,23 @@
       <div class="card-icon">05</div>
       <span class="card-status status-draft">작성중</span>
       <h3 class="card-title">과학도서관 자율위원장</h3>
-      <p class="card-subtitle">1년 역임</p>
+      <p class="card-subtitle">1년 역임 · 조직 관리 및 소통</p>
       <div class="card-tags">
         <span class="card-tag">리더십</span>
-        <span class="card-tag">조직관리</span>
+        <span class="card-tag">조직 관리</span>
+        <span class="card-tag">책임감</span>
       </div>
     </div>
 
   </div>
 </div>
+
+<footer>
+  <div class="footer-content">
+    <p><strong>전력변환 회로 설계 포트폴리오</strong></p>
+    <p>영남대학교 전기공학과 · 전동화 전력변환 H/W 엔지니어</p>
+  </div>
+</footer>
 
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
@@ -526,10 +580,10 @@ const data = {
     title: 'RC카 주행 중 셧다운 원인 규명·해결',
     subtitle: '전력전자학회 IE 경진대회 · 하드웨어 담당',
     metrics: [
-      { value: '2회 중 1회', label: '셧다운 발생 빈도', color: 'orange' },
-      { value: '2–3 A', label: '모듈 순간 요구 전류', color: '' },
-      { value: 'TPS54202', label: '전용 5V 벅 추가', color: 'accent' },
-      { value: '0회', label: '재설계 후 셧다운', color: 'success' }
+      { value: '2회 중 1회', label: '셧다운 발생 빈도' },
+      { value: '2–3 A', label: '모듈 순간 요구 전류' },
+      { value: 'TPS54202', label: '전용 5V 벅 추가' },
+      { value: '0회', label: '재설계 후 셧다운' }
     ],
     star: [
       { label: 'SITUATION', content: '주행 2회 중 1회꼴로 차량이 꺼지는 문제 발생.' },
@@ -542,10 +596,10 @@ const data = {
     title: 'GaN 소자 기반 인버터 — 열 마진 설계',
     subtitle: 'IE 경진대회 RC카 · Infineon CoolGaN IGC019S06S1',
     metrics: [
-      { value: '60 A', label: '선정 동작 전류', color: '' },
-      { value: '−33%', label: '허용 손실 여유 감소', color: 'orange' },
-      { value: '×1.3', label: 'R_DS(on) 상승', color: '' },
-      { value: '3위', label: 'IE 경진대회', color: 'success' }
+      { value: '60 A', label: '선정 동작 전류' },
+      { value: '−33%', label: '허용 손실 여유 감소' },
+      { value: '×1.3', label: 'R_DS(on) 상승' },
+      { value: '3위', label: 'IE 경진대회' }
     ],
     star: [
       { label: 'SITUATION', content: '랩타임과 인버터 효율 평가. 속도(대전류) vs 안정성(완주) 딜레마.' },
@@ -558,10 +612,10 @@ const data = {
     title: 'KSAE e-포뮬러 전기회로팀',
     subtitle: '자작자동차 동아리 · 3년 활동',
     metrics: [
-      { value: '3년', label: '전기회로팀 활동', color: '' },
-      { value: '은상', label: '2학년 대회', color: 'accent' },
-      { value: '동상', label: '3학년 대회', color: 'accent' },
-      { value: '팀 협업', label: '장기 프로젝트', color: 'success' }
+      { value: '3년', label: '전기회로팀 활동' },
+      { value: '은상', label: '2학년 대회' },
+      { value: '동상', label: '3학년 대회' },
+      { value: '팀 협업', label: '장기 프로젝트' }
     ],
     star: [
       { label: 'SITUATION', content: '대학생 자작자동차 동아리 e-포뮬러 전기회로팀 3년 활동.' },
@@ -574,10 +628,10 @@ const data = {
     title: '플라이백 컨버터 파워서플라이 제작',
     subtitle: '도전학기제 · 절연형 DC-DC 컨버터',
     metrics: [
-      { value: 'SMPS', label: '절연형 컨버터', color: 'accent' },
-      { value: '플라이백', label: '토폴로지', color: '' },
-      { value: '자기소자', label: '트랜스포머 설계', color: '' },
-      { value: '자기주도', label: '프로젝트', color: 'success' }
+      { value: 'SMPS', label: '절연형 컨버터' },
+      { value: '플라이백', label: '토폴로지' },
+      { value: '자기소자', label: '트랜스포머 설계' },
+      { value: '자기주도', label: '프로젝트' }
     ],
     star: [
       { label: 'SITUATION', content: '도전학기제 프로젝트로 파워 서플라이 자체 제작.' },
@@ -590,10 +644,10 @@ const data = {
     title: '과학도서관 자율위원장',
     subtitle: '1년 역임 · 조직 관리 및 소통',
     metrics: [
-      { value: '1년', label: '위원장 역임', color: '' },
-      { value: '조직 관리', label: '리더십', color: 'accent' },
-      { value: '소통', label: '갈등 조정', color: '' },
-      { value: '책임감', label: '비전공 역량', color: 'success' }
+      { value: '1년', label: '위원장 역임' },
+      { value: '조직 관리', label: '리더십' },
+      { value: '소통', label: '갈등 조정' },
+      { value: '책임감', label: '비전공 역량' }
     ],
     star: [
       { label: 'SITUATION', content: '과학도서관 자율위원회 운영.' },
@@ -617,7 +671,7 @@ document.querySelectorAll('.card').forEach(card => {
     
     document.getElementById('modalMetrics').innerHTML = project.metrics.map(m => `
       <div class="metric">
-        <div class="metric-value ${m.color}">${m.value}</div>
+        <div class="metric-value">${m.value}</div>
         <div class="metric-label">${m.label}</div>
       </div>
     `).join('');
